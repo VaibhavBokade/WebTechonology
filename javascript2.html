@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>
+	    User Registration Form
+	</title>
+    <style>
+        div{
+            height: 200px;
+            width: 500px;
+            padding: 20px;
+        }
+        .inputbox{
+            border: 2px solid red;
+            color: red;
+        }
+        .outputbox{
+            border: 2px solid green;
+            color: green;
+        }
+        .error{
+            color: red;
+            font-weight: bolder;
+        }
+    </style>
+        <script>
+            function ValidateName(ename){
+                var status=false;
+                var result="", error="";
+                if(ename.length>0){
+                    error="";
+                    result="Hello " + ename + ", how are you?";
+                }else{
+                    result="";
+                    error="I am sorry, you cannot leave this field blank";
+                }
+                document.getElementById("resultheading").innerText=result;
+                document.getElementById("errormessage").innerText=error;
+                return status;
+            }
+        </script>
+    </head>
+
+    <body>       
+		<h1 id="heading1">CDAC, Pune</h1>
+		<br>
+		<div class="inputbox">
+            <span>Enter Name</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="txtname">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" 
+            id="btn1" 
+            value="Display Name"
+            onclick="ValidateName(document.getElementById('txtname').value);">
+            <br>
+            <br>
+            <span class="error" id="errormessage"></span>
+        </div>
+        <br>
+		<div class="outputbox">
+            <h3 id="resultheading"></h3>
+        </div>
+	</body>
+</html>

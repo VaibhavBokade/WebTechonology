@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registrattion form</title>
+    </head>
+    <body>
+        <script>
+            function checkValidation(){
+                var name=document.getElementById("uname").value;
+                var upattern =/^([a-zA-Z]+)$/
+                if(name.length == 0){
+                   document.getElementById("msg1").innerHTML = " Please enter your name";
+                   document.getElementById("msg1").style.color="red"
+                }
+                else if(!name.match(upattern)){
+                    document.getElementById("msg1").innerHTML="Enter in correct format";
+                    document.getElementById("msg1").style.color="red";
+                }
+                else{
+                    document.getElementById("msg1").innerHTML=" "
+                }
+            }
+
+
+
+             function checkEmail(){
+                var email=document.getElementById("email").value; 
+            var pattern=/^([a-zA-Z]+)@([a-zA-Z]+).([a-zA-Z]{2,3})$/
+
+            if(email== ''){
+                document.getElementById("msg3").innerHTML=" Enter email address";
+                document.getElementById("msg3").style.color="red";
+            }
+            else if(!email.match(pattern)){
+                document.getElementById("msg3").innerHTML=" Enter valid pattern";
+                document.getElementById("msg3").style.color="red";
+            }
+            else{
+                document.getElementById("msg1").innerHTML="";
+
+            }
+            document.getElementById("email").onblur= checkValidation;
+             }
+                
+            
+
+           
+        </script>
+        <h1>Form Validation</h1>
+        <form>
+        <lable>Username</lable><span style="color:red">*</span>
+        <input type="text" id="uname" onblur="checkValidation();" ><span id="msg1"></span><br><br>
+         
+        <label>Email</label><span style="color: red;">*</span>
+    <input type="text" id="email" onblur="checkValidation();"><span id="msg3"></span><br><br>
+
+
+        <!-- <button type="button" id="but1" onclick="checkValidation()">check name</button> -->
+        <button type="button" onclick="checkValidation();">Login</button>
+    </form>
+    </body>
+</html>

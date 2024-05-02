@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Watch</title>
+    </head>
+    <body>
+        
+        <script>
+            var show;
+            function showdate() {
+                dt= new Date();
+
+                document.getElementById('div1').innerHTML=dt;
+            }
+
+            function assignDate() {
+                show = setInterval(showdate,1000);
+            }
+
+            function stopdate() {
+                clearInterval(show)
+            }
+        </script>
+
+        <div id="div1"></div><br><br>
+        <button type="button" name="btn1" onclick="assignDate()">show date</button>
+        <button type="button" name="btn2" onclick="stopdate()">stop date</button>
+
+    </body>
+</html>

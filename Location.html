@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Find my location</title>
+        
+    </head>
+    <body>
+        <input type="button" value="find me" id="btn" ><br>
+        <div id="div1"></div>
+        <script>
+            
+
+            document.getElementById("btn").onclick=()=>{
+                if(navigator.geolocation){
+                    console.log(navigator.geolocation)
+                    navigator.geolocation.getCurrentPosition(function(pos){
+                        document.getElementById("div1").innerHTML="Latitude :"+pos.coords.latitude +"<br> Longitude :" +pos.coords.longitude;
+
+                    })
+
+                }
+                else{
+                    document.getElementById("div1").innerHTML="Geolocation is not supported....";
+
+                }
+            }
+        </script>
+    </body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+</body>
+</html> -->

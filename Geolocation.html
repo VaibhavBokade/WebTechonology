@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+        <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+        <script src="main.js"></script> -->
+
+        <body>
+
+            <input type="button" id="loc" value="Geolocation"><br>
+<div id="div1"></div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15131.28352027578!2d73.80660485!3d18.536994800000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1671522934713!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+        <script>
+            document.getElementById("loc").onclick=function(){
+                if(navigator.geolocation){
+                    navigator.geolocation.getCurrentPosition(function(pos){
+                        document.getElementById("div1").innerHTML="latitude="+pos.coords.latitude+" longitude="+pos.coords.longitude;
+                    })
+                    }
+                    else{
+                    document.getElementById("div1").innerHTML="geolocation is not supported"
+                }
+            }
+        </script>
+
+</body>
+</head>
+
+   
+
+
+</html>

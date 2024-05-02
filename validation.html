@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <script>
+        function checkData(){
+            var name = document.getElementById("uname").value;
+            var upattern =/^([a-zA-Z]+)\s([a-zA-Z]+)$/
+
+            if(name.length == 0){
+                document.getElementById("msg1").innerHTML="Enter valid name";
+                document.getElementById("msg1").style.color="red";
+
+            }
+            else if(!name.match(upattern)){
+                document.getElementById("msg1").innerHTML="Enter alphabates only";
+                document.getElementById("msg1").style.color="red";
+            }
+            else{
+                document.getElementById("msg1").innerHTML="";
+            }
+        
+
+            var email=document.getElementById("email").value;
+            var pattern=/^([a-zA-Z\#\$]+@[a-zA-Z]+).([a-zA-Z]{2,3})$/
+
+            if(email.length == 0){
+                document.getElementById("msg3").innerHTML=" Enter email address";
+                document.getElementById("msg3").style.color="red";
+            }
+            else if(!pattern.test (email)){
+                document.getElementById("msg3").innerHTML=" Enter valid pattern";
+                document.getElementById("msg3").style.color="red";
+            }
+            else{
+                document.getElementById("msg1").innerHTML="";
+
+            }
+            
+
+            
+        }
+
+        function validPassword(){
+            var pass=document.getElementById("password").value;
+            var pattern=/^([a-zA-Z\#\$])+@{0-9}+)$/
+            if(pass.length == 0){
+               document.getElementById("msg2").innerHTML=" Enter Password";
+               document.getElementById("msg2").style.color="red";
+            }
+            else if(!pass.match(pattern)){
+                document.getElementById("msg2").innerHTML=" Enter valid pattern"
+                document.getElementById("msg2").style.color="red";
+            }
+            else{
+                document.getElementById("msg2").innerHTML="";
+            }
+        }
+
+        function randomcolor(){
+        var color =Math.floor(Math.random()*6553234)
+        document.body.style.background="#"+color
+    }
+    
+    setInterval(randomcolor,1000)
+
+    </script>
+    <h1>Form</h1>
+<form>
+    <lable>Username</lable><span style="color: red;">*</span>
+    <input type="text" id="uname" onblur="checkData();"><span id="msg1"></span><br><br>
+    
+
+    <label>Enter Password</label><span style="color: red;">*</span>
+    <input type="Password" id="password" onblur="validPassword();"><span id="msg2"></span><br><br>
+
+    <label>Email</label><span style="color: red;">*</span>
+    <input type="text" id="email" onblur="checkEmail();"><span id="msg3"></span><br><br>
+
+    <!-- <label></label> --> 
+
+    
+    
+    <button type="button" onclick="checkData();">Login</button>
+   <button type="button" onclick="randomcolor();">color</button>
+
+    
+
+</form>
+
+
+
+    
+    
+</body>
+</html>

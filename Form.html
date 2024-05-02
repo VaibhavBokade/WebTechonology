@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form</title>
+
+    </head>
+    <body>
+        <script>
+            var names = [];
+
+            displaydata=()=> {
+                str="<ol>";
+                    for(var nm of names) {
+                        str+="<li>"+ nm +"</li>"
+                    }
+                    str +="</ol>"
+                    document.getElementById("mydiv").innerHTML=str;
+            }
+            managedata = function() {
+                arr=document.getElementsByName("action");
+
+                for(var i=0;i<arr.length; i++){
+                    if(arr[i].checked) {
+                        var op=arr[i].value;
+                        break;
+                    }
+                }
+                switch(op) {
+                    case "add":
+                        nm=document.getElementById("nm").value;
+                        names.push(nm); 
+                        console.log(names); 
+                        break; 
+                        
+                    case "delete":
+                        nm=document.getElementById("nm").value;
+                        pos = names.indexOf(nm);
+                        if(pos != -1){
+                            names.splice(pos, 1); //delete first occurance
+                            //names=names.filter(x=>x!=nm) //to delete all occurances
+                            console.log(names);
+                        }else {
+                                alert("Name not found");
+                            }
+                        break;
+
+                        case "modify":
+                            nm = document.getElementById("nm").value;
+                            newnm = prompt("enter new name");
+                            pos =names.indexOf(nm);
+                            if(pos != -1) {
+                                names.splice(pos, 1, newnm); //delete first occurance and replace it with new name
+
+                            }else {
+                                alert("Name not found");
+                            }
+                            break;
+
+                        case "displayall":
+                            displayall();
+                            break;
+
+                        // case "search":
+
+
+                }
+
+            }
+        </script>
+        <form>
+            Name:<input type="text" name="name" id="nm" placeholder="ente name"><br><br>
+
+            <input type="radio" name="action" id="add" value="add"><label for="add" >Add</label>
+            <input type="radio" name="action" id="dalete" value="delete"><label for="delete">Delete</label>
+
+            
+            <input type="radio" name="action" id="modify" value="modify"><lable for="modify">Modify</lable>
+            <input type="radio" name="action" id="displayall" value="displayall"><lable for="displayall">displayall</label>
+            <input type="radio" name="action" id="search" value="search" ><label for="search">Search</label><br><br>
+
+            <button type="button" name="btn" id="btn1" onclick="managedata()">do action</button>
+            <button type="button" name="btn" id="btn2">clear</button>
+        </form>
+    </body> 
+</html>

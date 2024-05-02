@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .myclass{
+                display:block;
+            }
+
+            .myc{
+                display:none;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        
+        <script>
+            $(document).ready(function(){
+                $('#show').click(function(){
+                    var name=$('#name').val();
+                    var address=$('#address').val();
+                    if(name.trim().length==0 && address.trim().length==0){
+                        alert("text boxes are blanks");
+                    }else{
+                        //id checkbox checked
+                         if($('#show').is(':checked')){
+                             //this will display form on the screen
+                             $('#div1').addClass('myclass');
+                            $('#div1').removeClass('myc');
+                            //assign the event
+                            $('#btn1').on('click',function(){
+                                var v=$('input:radio[name=subject]:checked').val();
+                                $('#select').val(v);
+                            });
+                         }else{
+                             $('#div1').addClass('myc');
+                            $('#div1').removeClass('myclass');
+                            $('#btn1').off('click');
+                           // alert("text boxes are not blanks");
+
+                        }
+                    }
+                    
+                });
+            });
+        </script>
+    </head>
+    <body>
+
+        Name:       <input type="text" id="name" name="name">
+        <br>
+        <br>
+        Address:    <input type="text" id="address" name="address">
+        <br>
+        <br>
+        <input type="checkbox" name="show" id="show">
+        <lable for="show">show details</lable>
+        <br>
+        <br>
+        <div id="div1" class="myc">
+            <fieldset style="width:400px">
+                <legend>
+                    subject 
+                </legend>
+
+                    Name:   <input type="text" id="select" name="name"><br><br>
+                    <input type="radio" name="subject" id="computer" value="computer"><lable>computer</lable>
+                    <input type="radio" name="subject" id="java" value="java"><lable>java</lable>
+                    <br>
+                    <br>
+                    <button type="button" name="btn" id="btn1">show selected data</button>
+            </fieldset>
+        </div>
+
+    </body>
+</html>

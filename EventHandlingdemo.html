@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <style>
+        .myclass{
+            display:block
+        }
+
+        .myc{
+            display: none;
+        }
+    </style>
+   <script src="jquery.js"></script> 
+   <script>
+    $(document).ready(function(){
+        $('#show').click(function(){
+            //retrive value of the text boxes
+          var name=$('#nm').val();
+          var address=$('#address').val();
+          //valadating that it has some text
+          if(name.trim().length == 0 && address.trim().length == 0) {
+            alert("textboxes are blank");
+          }  else{
+            //is checkbox c hacked
+            if($('#show').is(':checked')) {
+                $('#div1').addClass('myclass');
+                $('#div1').removeClass('myc');
+                //asign the event
+                $('#btn1').on('click', function(){
+                    var v=$('input:radio[name=subject]:checked').val();
+                    $('#select').val(v);
+               });
+             } 
+            else{
+                $('#div1').addClass('myc');
+                $('#div1').removeClass('myclass');
+                $('#btn1').off('click');
+            }
+          }
+        });
+    })
+   </script>
+</head>
+<body>
+    <fieldset style="width: 400px;">
+    Name:<input type="text" name="name" id="nm" ><br><br>
+   Address: <input type="text" name="address" id="address"><br><br>
+   <input type="checkbox" name="show" id="show" ><lable for="show" >show details</lable><br><br>
+
+   <div id="div1" class="myc">  
+    <fieldset style="width: 400px;">
+        <legend>Subject</legend>
+
+    Name:<input type="text" name="name" id="select " ><br><br>
+    <input type="radio" name="subject" id="computer" value="computer"><label for="computer">Computer</label>
+    <input type="radio" name="subject" id="Java" value="java"><lable for="Java">Java</lable><br><br>
+    <button type="button" name="btn" id="btn1" >show selected</button>
+</fieldset>
+</fieldset>
+</div>
+</body>
+</html>

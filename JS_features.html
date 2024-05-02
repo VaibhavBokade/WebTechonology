@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript features </title>
+        <body>
+            <!-- <input type="button" id="btn" value="arrow fun"> -->
+        <script>
+            // for(let i=0; i<=10; i++){
+            //     document.write("i ="+i+ "<br>")
+            // }
+
+            // let str=`Javascript is a language which is used in wed programming techonology`
+            // document.write(str)
+
+            // let a=10, b=20
+            // document.write(`The number a =${a} and b=${b} and addtion is = ${a+b}`) //method of taking string value printing value
+
+                // var h=()=>"hello"
+                // document.write(h()+"<br>")
+
+                // var addtion=(a,b) => a+b
+                // document.write(addtion(5,6)+"<br>")
+
+                // var substration=(a,b) => a-b
+                // document.write(substration(10,4))
+
+
+                // document.getElementById("btn").onclick=()=>alert("button clicked")
+
+                // let str="hello welcome to cdac acts pune"
+                // for(let i of str)
+                // document.write(i+"<br>")
+
+                // function fun(...n) { //rest operator
+                //     document.write(`array values are = ${n}`)
+                // }
+                // fun(20,10,30,2,6,1,34,78)
+
+                // let arr=[1,2,3,4,5]
+                // let arr1=[...arr,6,7]
+                 
+                // document.write(arr1+"<br>") //spread operator
+
+                // function fun(a,b,c,d,e) {
+                //     document.write(`${a} and ${b}`)
+                // }
+                // fun(...arr)
+
+                
+                // let x=1;
+                // let y=2;
+                // document.write(`before swapping =${x} and ${y}`)
+                
+                // [x,y]=[y,x];
+                // document.write(`after swapping =${x} and ${y}`)
+               
+                // let [x,y]=[10]
+                // document.write(`${a} and ${b}`)
+
+                //**********destructuring of array*********
+                // let obj={name:"Ram",age:20}
+                // let {name,age}=obj
+                // document.write(name)
+                // document.write(age)
+                
+                class Person{
+                    constructor(fn,ln,a){
+                        this.fname=fn;
+                        this.lname=ln;
+                        this.age=a;
+                    }
+                    get getage(){
+                        return this.age
+                    }
+
+                    set setage(i){
+                        this.age=i
+                    }
+                    getfullName(){
+                        return this.fname+ " " +this.lname +" "+this.age
+                    }
+                }
+
+                let p=new Person("Vaibhav","Bokade",24)
+                document.write(p.getfullName())
+                document.write(p.getage+"<br>")
+                p.setage=20
+                document.write(p.getage+"<br>")
+
+        </script>
+
+        <!-- <button type="button" id="btn" >click me</button> -->
+
+        
+    </body>
+    </head>
+</html>

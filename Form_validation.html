@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="">
+        <script>
+             var count =0;
+        function Namecheaker(){
+            var name=document.getElementById("name").value;
+            var npattern=/^([a-zA-Z]+)$/
+
+           
+            
+            if(name.length==0){
+                document.getElementById("msg1").innerHTML="please Fill these";
+                document.getElementById("msg1").style.color="Red";
+                document.getElementById('msg1').style.fontSize="12px";
+                document.getElementById('msg1').style.fontFamily="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif";
+                
+            }
+            else if(!npattern.test(name)){
+                document.getElementById('msg1').innerHTML="Enter Valid Name";
+                document.getElementById('msg1').style.color="Red";
+                document.getElementById('msg1').style.fontSize="12px";
+                document.getElementById('msg1').style.fontFamily="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif";
+            }
+            
+            else{
+                document.getElementById('msg1').innerHTML="Verified";
+                document.getElementById('msg1').style.color="white";
+                count=count+1;
+            }
+
+
+        }
+    
+
+        function passwordValidator(){
+
+            var password=document.getElementById("password").value;
+            var regex=/([0-9]{8,8})/
+
+                  if(!isNaN(password)){
+                    
+                   if(!regex.test(password))
+                  {
+                    document.getElementById('msg2').innerHTML="pattern not match"
+        
+                    document.getElementById('msg2').style.color="Red"
+                document.getElementById('msg2').style.fontSize="12px";
+                document.getElementById('msg2').style.fontFamily="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif";
+                  }else if(password==0){
+                    document.getElementById('msg2').innerHTML="Enter Password";
+                    document.getElementById('msg2').style.color="Red";
+                    
+                  }else{
+                    document.getElementById('msg2').innerHTML="Verified";
+                    document.getElementById('msg2').style.color="white"
+                      
+                  }
+        }else{
+            document.getElementById('msg2').innerHTML="Enter Numbers only"
+                    document.getElementById('msg2').style.color="Red";
+                    document.getElementById('msg2').style.fontSize="12px";
+                document.getElementById('msg2').style.fontFamily="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif";
+        }
+    }
+
+        function ageValidator(){
+            var dob =new Date(document.getElementById("bdate").value).getFullYear();
+            var date = new Date().getFullYear();
+            var age=date-dob;
+        
+            if(age < 18){
+                document.getElementById('msg5').innerHTML="Age should be Above 18"
+                document.getElementById('msg5').style.color="Red"
+                document.getElementById('msg5').style.fontSize="12px";
+                document.getElementById('msg5').style.fontFamily="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif";
+            }
+            else{
+                document.getElementById('msg5').innerHTML="verified"
+                document.getElementById('msg5').style.color="white"
+                count=count+1;
+            }
+        }
+
+        
+
+        function emailValidator(){
+            var email=document.getElementById("email").value;
+            var emailpattern=/([a-zA-z_0-9]+)@(([a-zA-Z]+){3,4}).(([a-zA-z]+){3})/;
+
+            if(email.length==0){
+             document.getElementById('msg3').innerHTML='Enter Email-id'
+             document.getElementById('msg3').style.color='Red'
+             document.getElementById('msg3').style.fontSize="12px";
+                document.getElementById('msg3').style.fontFamily="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif";
+             
+
+            }else if(!email.match(emailpattern)){
+                document.getElementById('msg3').innerHTML="Pattern Not Matched"
+                document.getElementById('msg3').style.color="Red"
+                document.getElementById('msg3').style.fontSize="12px";
+                document.getElementById('msg3').style.fontFamily="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif";
+            }
+            else{
+                document.getElementById('msg3').innerHTML="verified"
+                document.getElementById('msg3').style.color="White"
+                
+                
+            }
+        }
+        var arr = new Array();
+        function saveData(){
+        
+            var pObject=new Object();
+            pObject.PersonName=document.getElementById("name").value,
+            pObject.Ppassword=document.getElementById("password").value,
+            pObject.Pemail=document.getElementById("email").value,
+            pObject.Pbdate=document.getElementById("bdate").value
+
+            console.log(arr);
+            
+            arr.push(pObject);
+            console.log(pObject);
+        
+            console.log("inserted")
+                document.getElementById("name").value="";
+                document.getElementById("password").value="";
+                document.getElementById("email").value="";
+                document.getElementById("bdate").value="";
+
+                alert("Data Saved Succesfully");
+        }
+
+        function showData(){
+            
+            if(1){ 
+                var start="<table border='1' style><tr><th>Name</th><th>Password</th><th>Email</th><th>DOB</th></tr>";
+                var end="</table>";
+                var tableElement="";
+                for(var i=0;i<arr.length;i++){
+                tableElement=tableElement + "<tr><td>" + arr[i].PersonName + 
+                    "</td><td>" + arr[i].Ppassword + "</td><td>"+arr[i].Pemail+"</td><td>"+ arr[i].Pbdate+"</td></tr>";
+                }    
+                var divObject=document.getElementById("resultbox");
+                divObject.innerHTML=start+tableElement+end;
+            }else{
+                alert("Since there is no data entered, there is no point in showing anything");
+            }
+            
+            
+
+        }
+         var flag=1;
+        function validateDropDown(){
+            var drop=document.getElementById("dropdown").value;
+            var val=document.getElementById("dropdown").value;
+            
+            if(val=="other" && flag==1)
+            {
+               var d= document.createElement("input");
+                d.setAttribute("type","text");
+                d.setAttribute("id" ,"otherbox");
+                d.setAttribute("placeHolder","Enter name of city");
+                document.getElementById("dropmsg").appendChild(d);
+                document.getElementById("otherbox").focus()
+                flag=flag+1;
+            }else if(document.getElementById("otherbox").value.length==0){
+                document.getElementById("drmsg").innerHTML="please Enter data"
+                document.getElementById("drmsg").style.color="red";
+
+            }else{
+                document.getElementById("drmsg").innerHTML="verify"
+                document.getElementById("drmsg").style.color="white";
+            }
+        }
+
+        function otherboxDatavalid(){
+            var data=document.getElementById("otherbox").value;
+
+            if(data.lenth==0){
+                document.getElementById("drmsg").innerHTML="please Enter data"
+                document.getElementById("drmsg").style.color="red";
+            }else{
+                document.getElementById("drmsg").innerHTML="verify"
+                document.getElementById("drmsg").style.color="white";
+            }
+        }
+
+        function captchaGenereator(){
+  var arr=['1','2','3','4','6','7','u','k','m','a','b','5','c','d','9','0','e','*','g','f','A','p','R','z','E','t','Q','Y','-','K','X'];
+
+            var a=arr[(Math.floor(Math.random()*arr.length))];
+            var b=arr[(Math.floor(Math.random()*arr.length))];
+            var c=arr[(Math.floor(Math.random()*arr.length))];
+            var d=arr[(Math.floor(Math.random()*arr.length))];
+            var e=arr[(Math.floor(Math.random()*arr.length))];
+            var f=arr[(Math.floor(Math.random()*arr.length))];
+
+            var captcha=a+""+b+""+c+""+d+""+e+""+f;
+
+            document.getElementById("imgcapcha").innerHTML=captcha;
+
+        }
+
+        function captchaValidator(){
+            var captcha=document.getElementById("imgcapcha").innerHTML;
+            var userCaptcha=document.getElementById("captchatextbox").value;
+
+            if(captcha==userCaptcha){
+                document.getElementById("captchaerr").innerHTML="Verified"
+                document.getElementById("captchaerr").style.color="white"
+
+            }else if(userCaptcha.length==0){
+                document.getElementById("captchaerr").innerHTML="please Enter Captcha"
+                document.getElementById("captchaerr").style.color="red"
+            }else{
+                document.getElementById("captchaerr").innerHTML="wrong Captcha"
+                document.getElementById("captchaerr").style.color="red"
+            }
+        }
+
+        </script>
+
+        <style>
+            #imgcapcha{
+                margin-left:10px;
+                background-color: rgb(249, 249, 249);
+                width: 500px;
+                padding:10px;
+                padding-left: 30px;
+                padding-right: 30px;
+                color:black;
+                border: 1px solid white;
+                
+            }
+
+            .outputs{
+                position:absolute;
+                margin-left: 50%;
+                width: 300px;
+                padding:20px;   
+            }
+
+
+        </style>
+    </head>
+
+    <body style="background: lightslategray;" onload="captchaGenereator()">
+
+        <span class="outputs">
+            <h3 id="resultbox">
+           </h3>
+        </span>
+        
+        
+        <div class="Container">
+            
+               
+            
+            <div class="special">
+              
+            <div class="inputlable">
+                Enter Name :
+                <span class="input"><input type="text" id="name" placeholder="Enter Name" onblur="Namecheaker();"></span>
+                
+                <span id="msg1"></span>
+            </div>
+            <br>
+            <br>
+            <div class="inputlable">
+                Enter Password:
+                <span class="input"><input type="password" id="password" placeholder="Enter Password" onblur="passwordValidator();"></span>
+                <span id="msg2"></span>
+            </div>
+            <br>
+            <br>
+            <div class="inputlable">
+                Enter Email:
+                <span class="input"><input type="text" id="email" placeholder="Enter Email-id" onblur="emailValidator();"></span>
+                <span id="msg3"></span>
+            </div>
+            <br>
+            <br>
+            <div class="inputlable">
+                Date Of Birth :
+                <span class="input"><input type="date" id="bdate"  onblur="ageValidator();"></span>
+                <span id="msg5"></span>
+            </div>
+            <br>
+            <span class="lable">Enter City :</span>
+            
+            <select id="dropdown" onchange="validateDropDown()" placeholder="select">
+                <option selected disabled value="select">select city</option>
+                <option>pune</option>
+                <option>mumbai</option>
+                <option>satara</option>
+                <option>other</option>
+            </select>
+            <span id="dropmsg"></span>
+            <span id="drmsg"></span>
+            <br>
+            <br>
+            <br>
+            <span class="captcha">
+                
+                
+                <span id="imgcapcha">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <br>
+                <br>
+                Enter captcha :
+               
+                <span class="texts">
+                    <input type="text" id="captchatextbox">
+                </span>
+                <span id="btn">
+                    <input type="button" id="btnvalid" value="verify" onclick="captchaValidator()">
+                </span>
+
+                <span id="captchaerr"></span>
+            </span>
+            
+        </div>
+        <br>
+            <br>
+            
+                <div class="buttons">
+        <input type="button" value="Login" onclick="saveData()">
+    </div>
+            
+    <br>
+            <br>
+    <div class="show">
+        <input type="button" value="showData" onclick="showData()">
+    </div>
+   
+   
+    
+        </div>
+        
+       
+    </body>
+</html>

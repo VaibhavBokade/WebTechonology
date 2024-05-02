@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+    <form id="bankForm">
+        <div style="border: solid 1px; margin-top: 2%; padding: 10px ; background-color: rgb(24, 188, 233) ; border-color: black; width: fit-content; margin-left: 38%;"> 
+            <h1>&nbsp;&nbsp;Operations</h1>
+            
+            <table>
+                <tr>
+                    <td>Number 1&ensp</td>
+                    <td>input type="text" id="num1" name="num1" maxlength="5"</td>
+
+                </tr>
+                <tr>style="margin: 2px;"
+                <td><input type="text" id="num2" name="num2" maxlength="5"</td>
+                </tr>
+                <tr><td>&ensp;&ensp;&ensp;&ensp;</td>
+                    <td>&ensp;&ensp;&ensp;&ensp;</td>
+            </table>
+    </form>
+</body>
